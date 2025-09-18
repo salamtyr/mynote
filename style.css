@@ -1,0 +1,225 @@
+:root {
+    --bg-color: #f7f7f7;
+    --text-color: #1a1a1a;
+    --card-bg: #ffffff;
+    --border-color: #e5e5e5;
+    --accent-color: #2563eb;
+    --accent-hover: #1d4ed8;
+    --error-color: #ef4444;
+    --error-hover: #dc2626;
+    --shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+body.dark-mode {
+    --bg-color: #1a1a1a;
+    --text-color: #f7f7f7;
+    --card-bg: #2a2a2a;
+    --border-color: #444444;
+    --accent-color: #3b82f6;
+    --accent-hover: #2563eb;
+    --error-color: #f87171;
+    --error-hover: #ef4444;
+    --shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: var(--bg-color);
+    color: var(--text-color);
+}
+
+header {
+    background: var(--card-bg);
+    padding: 1rem 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    box-shadow: var(--shadow);
+}
+
+header h1 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0;
+}
+
+#menuBtn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: var(--text-color);
+    transition: transform 0.2s ease;
+}
+
+#menuBtn:hover {
+    transform: scale(1.1);
+}
+
+.sidebar {
+    position: fixed;
+    top: 0;
+    left: -200px;
+    width: 200px;
+    height: 100%;
+    background: var(--card-bg);
+    transition: left 0.3s ease;
+    box-shadow: 2px 0 5px rgba(0,0,0,0.05);
+    z-index: 900;
+}
+
+.sidebar.active {
+    left: 0;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 3rem 0;
+    margin: 0;
+}
+
+.sidebar li a {
+    display: block;
+    padding: 0.75rem 1.5rem;
+    text-decoration: none;
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: color 0.2s, padding-left 0.2s;
+}
+
+.sidebar li a:hover {
+    color: var(--accent-color);
+    padding-left: 2rem;
+}
+
+main {
+    margin-top: 4rem;
+    padding: 1.5rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    transition: margin-left 0.3s ease;
+}
+
+.note-area, .settings-area, .account-area {
+    background: var(--card-bg);
+    padding: 1rem;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    margin-bottom: 1.5rem;
+}
+
+#noteInput {
+    width: 100%;
+    height: 80px;
+    padding: 0.75rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    resize: vertical;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    background: var(--card-bg);
+    color: var(--text-color);
+    transition: border-color 0.2s;
+}
+
+#noteInput:focus {
+    border-color: var(--accent-color);
+    outline: none;
+}
+
+button {
+    background: var(--accent-color);
+    color: #ffffff;
+    border: none;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: background 0.2s, transform 0.2s;
+    margin: 0.5rem 0.5rem 0 0;
+}
+
+button:hover {
+    background: var(--accent-hover);
+    transform: translateY(-1px);
+}
+
+.note-item {
+    background: var(--card-bg);
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 8px;
+    box-shadow: var(--shadow);
+    opacity: 0;
+    animation: fadeIn 0.4s ease forwards;
+}
+
+.note-item p {
+    margin: 0 0 0.5rem 0;
+    font-size: 1rem;
+}
+
+.note-item small {
+    color: #6b7280; /* Gris clair, ajustable en dark mode si besoin */
+    font-size: 0.8rem;
+}
+
+.note-item button {
+    background: var(--error-color);
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+}
+
+.note-item button:hover {
+    background: var(--error-hover);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.setting-item {
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.setting-item label {
+    font-weight: 600;
+}
+
+#darkModeToggle {
+    cursor: pointer;
+}
+
+select {
+    padding: 0.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: var(--card-bg);
+    color: var(--text-color);
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    background: var(--card-bg);
+    color: var(--text-color);
+}
+
+@media (max-width: 768px) {
+    .sidebar { width: 180px; left: -180px; }
+    main { padding: 1rem; max-width: 100%; }
+}
