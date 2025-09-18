@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mes Notes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1 data-i18n="appTitle">Mes Notes</h1>
+        <button id="menuBtn">☰</button>
+    </header>
+
+    <nav id="sidebar" class="sidebar">
+        <ul>
+            <li><a href="#" onclick="addNote()" data-i18n="newNote">Nouvelle Note</a></li>
+            <li><a href="#" onclick="showAllNotes()" data-i18n="allNotes">Toutes les Notes</a></li>
+            <li><a href="#" onclick="searchNotes()" data-i18n="search">Rechercher</a></li>
+            <li><a href="#" onclick="exportNotes()" data-i18n="export">Exporter</a></li>
+            <li><a href="#" onclick="showSettings()" data-i18n="settings">Paramètres</a></li>
+            <li><a href="#" onclick="showAccount()" data-i18n="account">Compte</a></li>
+            <li id="logoutItem" style="display: none;"><a href="#" onclick="logout()" data-i18n="logout">Déconnexion</a></li>
+        </ul>
+    </nav>
+
+    <main id="mainContent">
+        <div id="noteSection" class="note-area">
+            <textarea id="noteInput" data-i18n-placeholder="writeNotePlaceholder" placeholder="Écris ta note..."></textarea>
+            <button onclick="saveNote()" data-i18n="save">Sauvegarder</button>
+        </div>
+        <div id="notesList"></div>
+
+        <div id="settingsSection" style="display: none;" class="settings-area">
+            <h2 data-i18n="settings">Paramètres</h2>
+            <div class="setting-item">
+                <label data-i18n="darkMode">Mode Sombre :</label>
+                <input type="checkbox" id="darkModeToggle" onclick="toggleDarkMode()">
+            </div>
+            <div class="setting-item">
+                <label data-i18n="language">Langue :</label>
+                <select id="languageSelect" onchange="changeLanguage(this.value)">
+                    <option value="fr">Français</option>
+                    <option value="en">English</option>
+                </select>
+            </div>
+        </div>
+
+        <div id="accountSection" style="display: none;" class="account-area">
+            <h2 data-i18n="account">Compte</h2>
+            <div id="loginForm">
+                <input type="text" id="username" data-i18n-placeholder="usernamePlaceholder" placeholder="Nom d'utilisateur">
+                <input type="password" id="password" data-i18n-placeholder="passwordPlaceholder" placeholder="Mot de passe">
+                <button onclick="login()" data-i18n="login">Se connecter</button>
+                <button onclick="signup()" data-i18n="signup">Créer un compte</button>
+            </div>
+            <div id="userInfo" style="display: none;">
+                <p data-i18n="loggedInAs">Connecté en tant que : <span id="currentUser"></span></p>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
